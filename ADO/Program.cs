@@ -10,34 +10,37 @@ namespace ADO
 {
 	internal class Program
 	{
+		static SqlConnection connection = null;
 		static void Main(string[] args)
 		{
 			string connection_string = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Movies_PV_521;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";     
-			Console.WriteLine(connection_string);
+			
+			Connector connector = new Connector(connection_string);
 
-			SqlConnection connection = new SqlConnection(connection_string); 
-			connection.Open();
+			connector.Insert("INSERT Directors (first_name,last_name) VALUES (N'Guy', N'Richie');");
 
-			string cmd = "SELECT move_id,title,release_date,first_name,last_name FROM Movies,Directors WHERE director=director_id";
-			SqlCommand command = new SqlCommand(cmd, connection);
+			Console.WriteLine($"PK Max:\t{connector.GetMaxPrimaryKey("Directors")}");
 
-			SqlDataReader reader = command.ExecuteReader();
-			for (int i = 0; i < reader.FieldCount; i++)
-				Console.Write(reader.GetName(i) + "\t");
-			Console.WriteLine();
-			while (reader.Read())
-			{
-				//Console.WriteLine($"{reader[0]}\t{reader[1]}\t{reader[2]}\t{reader[3]}");
-				for (int i = 0; i < reader.FieldCount; i++)
-					Console.Write($"{reader[i]}\t\t");
-				Console.WriteLine();
-			}
-			reader.Close();
+			//string cmd = "SELECT move_id,title,release_date,first_name,last_name FROM Movies,Directors WHERE director=director_id";
 
-			command.CommandText = "SELECT COUNT(*) FROM Movies";
-			Console.WriteLine($"Количество записей:\t{command.ExecuteScalar()}");
+			connector.Select("*", "Directors");
+			Console.WriteLine($"Количество записей: {connector.Scalar("SELECT COUNT(*) FROM Directors")}");
 
-			connection.Close();
+			connector.Select
+				(
+				"title,release_date,first_name,last_name",
+				"Movies,Directors",
+				"director=director_id"
+				);
+			Console.WriteLine($"Количество записей: {connector.Scalar("SELECT COUNT(*) FROM Movies")}");
+
+
+
+			//command.CommandText = "SELECT COUNT(*) FROM Movies";
+			//Console.WriteLine($"Количество записей:\t{command.ExecuteScalar()}");
+
+			//connection.Close();
 		}
+
 	}
 }
