@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 
 namespace DBtools
 {
@@ -26,7 +27,7 @@ namespace DBtools
 			connection.Open();
 			SqlCommand command = new SqlCommand(cmd, connection);
 
-			SqlDataReader reader = command.ExecuteReader();
+			SqlDataReader reader = command.ExecuteReader(); 
 			for (int i = 0; i < reader.FieldCount; i++)
 			{
 				Console.Write(reader.GetName(i) + "\t");
@@ -57,6 +58,21 @@ namespace DBtools
 			cmd += ";";
 			return Select(cmd);
 
+		}
+		public Dictionary<string, int> GetDictionary(string table)
+		{
+			Dictionary<string, int> dictionary = new Dictionary<string, int>();
+			string cmd = $"SELECT {table.Substring(0, table.Length - 1)}_name,{table.Substring(0,table.Length-1)}_id FROM {table}";
+			SqlCommand command = new SqlCommand(cmd, connection);
+			connection.Open();
+			SqlDataReader reader= command.ExecuteReader();
+			while (reader.Read())
+			{
+				dictionary.Add(reader[0].ToString(), Convert.ToInt32(reader[1]));
+			}
+			connection.Close ();	
+			connection.Close() ;
+			return dictionary;
 		}
 		public object Scalar(string cmd)
 		{
