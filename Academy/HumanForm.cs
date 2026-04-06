@@ -8,18 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Configuration;
+
 namespace Academy
 {
-	public partial class HumanForm : Form
+	public abstract partial class HumanForm : Form
 	{
+		//static protected DBtools.Connector connector;
 		public HumanForm()
 		{
 			InitializeComponent();
+			//connector = new DBtools.Connector(ConfigurationManager.ConnectionStrings["PV_521_Import"].ConnectionString);
 		}
 
 		private void labelFirstName_Click(object sender, EventArgs e)
 		{
 
 		}
+
+		protected abstract void buttonOK_Click(object sender, EventArgs e);
+	
 	}
 }
