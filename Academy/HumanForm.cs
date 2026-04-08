@@ -14,6 +14,7 @@ namespace Academy
 {
 	public partial class HumanForm : Form
 	{
+		internal Models.Human human;
 		//static protected DBtools.Connector connector;
 		protected HumanForm()
 		{
@@ -28,7 +29,16 @@ namespace Academy
 
 		protected virtual void buttonOK_Click(object sender, EventArgs e)
 		{
-
+			human = new Models.Human
+				(
+				tbLastName.Text,
+				tbFirstName.Text,
+				tbMiddleName.Text,
+				dtpBirthDate.Value.ToString("yyyy-MM-dd"),
+				tbEmail.Text,
+				tbPhone.Text,
+				pbPhoto.Image
+				);
 		}
 	
 	}
