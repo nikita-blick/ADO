@@ -44,6 +44,7 @@
 			this.tabPageDisciplines = new System.Windows.Forms.TabPage();
 			this.dgvDisciplines = new System.Windows.Forms.DataGridView();
 			this.tabPageTeachers = new System.Windows.Forms.TabPage();
+			this.buttonAddTecher = new System.Windows.Forms.Button();
 			this.dgvTeachers = new System.Windows.Forms.DataGridView();
 			this.statusStrip.SuspendLayout();
 			this.tabControl.SuspendLayout();
@@ -233,6 +234,7 @@
 			// 
 			// tabPageTeachers
 			// 
+			this.tabPageTeachers.Controls.Add(this.buttonAddTecher);
 			this.tabPageTeachers.Controls.Add(this.dgvTeachers);
 			this.tabPageTeachers.Location = new System.Drawing.Point(4, 22);
 			this.tabPageTeachers.Name = "tabPageTeachers";
@@ -241,6 +243,16 @@
 			this.tabPageTeachers.TabIndex = 4;
 			this.tabPageTeachers.Text = "Teachers";
 			this.tabPageTeachers.UseVisualStyleBackColor = true;
+			// 
+			// buttonAddTecher
+			// 
+			this.buttonAddTecher.Location = new System.Drawing.Point(709, 6);
+			this.buttonAddTecher.Name = "buttonAddTecher";
+			this.buttonAddTecher.Size = new System.Drawing.Size(75, 23);
+			this.buttonAddTecher.TabIndex = 2;
+			this.buttonAddTecher.Text = "Добавить";
+			this.buttonAddTecher.UseVisualStyleBackColor = true;
+			this.buttonAddTecher.Click += new System.EventHandler(this.buttonAddTecher_Click);
 			// 
 			// dgvTeachers
 			// 
@@ -300,6 +312,7 @@
 		private System.Windows.Forms.ComboBox cbStudentsGroup;
 		private System.Windows.Forms.ComboBox cbStudentsDirection;
 		private System.Windows.Forms.Button buttonAddStudent;
+		private System.Windows.Forms.Button buttonAddTecher;
 	}
 }
 
