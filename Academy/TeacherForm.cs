@@ -18,6 +18,16 @@ namespace Academy
 		{
 			InitializeComponent();
 		}
+		public TeacherForm(int id) : this()
+		{
+			DataTable table = DataBase.Connector.Select($"SELECT * FROM Teachers WHERE teacher_id = {id}");
+			teacher = new Models.Teacher(table.Rows[0].ItemArray);
+			human = teacher;
+			Extract();
+			this.dtpWorkSince.Value = Convert.ToDateTime(teacher.work_since);
+			this.tbRate.Text = teacher.rate.ToString();
+			pbPhoto.Image = DataBase.Connector.DownloadPhoto("Teachers","photo",id);
+		}
 		protected override void buttonOK_Click(object sender, EventArgs e)
 		{
 			base.buttonOK_Click(sender, e);
@@ -42,5 +52,9 @@ DataBase.Connector.Scalar($"INSERT Teachers({teacher.GetNames()}) VALUES ({teach
 
 		}
 
+		private void TeacherForm_Load(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

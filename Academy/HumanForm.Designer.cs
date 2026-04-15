@@ -173,6 +173,7 @@
 			this.tbPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.tbPhone.ImeMode = System.Windows.Forms.ImeMode.NoControl;
 			this.tbPhone.Location = new System.Drawing.Point(232, 231);
+			this.tbPhone.MaxLength = 16;
 			this.tbPhone.Name = "tbPhone";
 			this.tbPhone.Size = new System.Drawing.Size(315, 31);
 			this.tbPhone.TabIndex = 11;
@@ -224,7 +225,7 @@
 			// 
 			this.labelID.AutoSize = true;
 			this.labelID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.labelID.Location = new System.Drawing.Point(27, 321);
+			this.labelID.Location = new System.Drawing.Point(25, 370);
 			this.labelID.Name = "labelID";
 			this.labelID.Size = new System.Drawing.Size(0, 25);
 			this.labelID.TabIndex = 17;
@@ -233,7 +234,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(848, 369);
+			this.ClientSize = new System.Drawing.Size(848, 417);
 			this.Controls.Add(this.labelID);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonOK);

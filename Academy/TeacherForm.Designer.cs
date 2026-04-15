@@ -86,6 +86,7 @@
 			this.Controls.Add(this.dtpWorkSince);
 			this.Name = "TeacherForm";
 			this.Text = "TeacherForm";
+			this.Load += new System.EventHandler(this.TeacherForm_Load);
 			this.Controls.SetChildIndex(this.tbLastName, 0);
 			this.Controls.SetChildIndex(this.tbFirstName, 0);
 			this.Controls.SetChildIndex(this.tbMiddleName, 0);
